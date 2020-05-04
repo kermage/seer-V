@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  nginx:
+    image: jwilder/nginx-proxy:alpine
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+networks:
+  default:
+    external:
+      name: nginx_proxy
